@@ -55,7 +55,7 @@
                         <a href="#!" class="text-reset">Elettronica</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-reset">Auto</a>
+                        <a href="#!" class="text-reset">Motori</a>
                     </p>
                     <p>
                         <a href="#!" class="text-reset">Sport</a>

@@ -10,21 +10,13 @@
     <title>{{ $title }} - FastMando</title>
 </head>
 
-<body class="background-custom-primary">
+<body class="background-image-filter">
 
     <x-navbar />
 
     <div class="container-fluid min-vh-100">
 
-        <header class="masthead">
-            <div class="container h-100">
-                <div class="row h-100 pt-5 align-items-center">
-                    <div class="col-12 text-center">
-                        <h1 class="fw-light">{{ $title }}</h1>
-                    </div>
-                </div>
-            </div>
-        </header>
+        <x-masthead title={{$title}}/>
 
         {{ $slot }}
 

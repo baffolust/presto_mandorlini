@@ -1,65 +1,82 @@
 :root {
-  --color-primary: #AAF683;
-  --color-secondary: #020122;
-  --color-tertiary: #FFFAFB;
-  --color-highlight: #FF9F1C;
-  --color-background: #08390d;
-  --color-background-op: #08390d59;
+    --color-primary: #AAF683;
+    --color-secondary: #020122;
+    --color-tertiary: #FFFAFB;
+    --color-highlight: #FF9F1C;
+    --color-background: #08390d;
+    --color-background-op: #08390d63;
+    --color-primary-op: #a9f683dc;
 
 }
 
 /* COLOR DEFINITION */
 
-.text-custom-primary{
+.text-custom-primary {
     color: var(--color-primary);
 }
 
-.text-custom-secondary{
+.text-custom-secondary {
     color: var(--color-secondary);
 }
 
-.text-custom-tertiary{
+.text-custom-tertiary {
     color: var(--color-tertiary);
 }
 
-.text-custom-highlight{
+.text-custom-highlight {
     color: var(--color-highlight);
 }
 
-.background-custom-primary{
+.background-custom-primary {
     background-color: var(--color-primary);
 }
 
-.background-custom-secondary{
+.background-custom-secondary {
     background-color: var(--color-secondary);
 }
 
-.background-custom-tertiary{
+.background-custom-tertiary {
     background-color: var(--color-tertiary);
 }
 
-.background-custom-highlight{
+.background-custom-highlight {
     background-color: var(--color-highlight);
 }
 
-.background-custom{
+.background-custom {
     background-color: var(--color-background);
 }
 
-.background-custom-op{
+.background-custom-op {
     background-color: var(--color-background-op);
-    
+
+}
+
+.background-image-filter {
+    background-image: 
+        linear-gradient(var(--color-primary-op), var(--color-primary-op)), url("/storage/app/public/media/img/sfondo.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* MASTHEAD */
 
 .masthead {
-  height: 15vh;
-  min-height: 100px;
+    height: 15vh;
+    min-height: 100px;
+}
+
+/* FORM */
+
+.form-custom {
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* ICONE */
 
 a.text-reset {
-  text-decoration: none;
+    text-decoration: none;
 }
