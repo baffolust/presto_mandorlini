@@ -1,23 +1,21 @@
 <x-layout title="Login">
 
+    <x-display-errors/>
+
     <div class="container">
         <div class="row justify-content-center mt-5">
             <div class="col-12 col-md-6 ">
-                <form class="rounded-4 background-custom-op text-light p-4 shadow">
+                <form class="rounded-4 background-custom-op text-light p-4 shadow" method="POST" action="{{route('login')}}">
+                    @csrf
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" name="email" class="form-control" id="email">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" id="password">
                     </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn background-custom-highlight">Login</button>
                 </form>
             </div>
         </div>
