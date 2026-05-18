@@ -7,7 +7,7 @@
             </div>
 
             @auth
-                <div class="col-12 col-md-6 d-flex justify-content-center h-100">
+                <div class="col-12 col-md-6 d-flex justify-content-center">
                     <a class="btn background-custom-highlight text-custom-secondary" href="{{ route('article.create') }}">Pubblica un Articolo</a>
                 </div>
             @endauth
