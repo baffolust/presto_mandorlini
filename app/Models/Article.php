@@ -20,7 +20,7 @@ class Article extends Model
     ];
 
 
-    public function cateogry():BelongsTo{
+    public function category():BelongsTo{
         return $this->belongsTo(Category::class);
     }
 

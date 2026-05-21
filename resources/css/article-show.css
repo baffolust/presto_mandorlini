@@ -1,0 +1,16 @@
+/* SWIPER */
+
+.articleSwiper {
+    width: 100%;
+    height: 550px;
+}
+
+.articleSwiper img {
+    width: 100%;
+    object-fit: contain;
+}
+
+.article-info{
+    width: 100%;
+}
+

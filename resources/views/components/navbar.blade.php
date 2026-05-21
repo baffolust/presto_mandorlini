@@ -53,13 +53,16 @@
                     </a>
                     <ul class="dropdown-menu">
                         @foreach ($categories as $category)
-                            <li><a class="dropdown-item" href="#">{{ $category->name }}</a></li>
+                            <li><a class="dropdown-item" href="{{route('article.byCategory', compact('category'))}}">{{ $category->name }}</a></li>
+                            @if (!$loop->last)
+                                <hr class="dropdown-divider">
+                            @endif
                         @endforeach
                     </ul>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    <a class="nav-link" aria-current="page" href="{{ route('article.index') }}">Tutti gli Articoli</a>
                 </li>
             </ul>
             <form class="d-flex" role="search">

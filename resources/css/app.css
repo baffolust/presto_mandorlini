@@ -1,2 +1,4 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import './common_style.css';
+@import './homepage_style.css';
+@import './article-show.css';

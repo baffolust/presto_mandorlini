@@ -1,65 +1,4 @@
-:root {
-    --color-primary: #AAF683;
-    --color-secondary: #020122;
-    --color-tertiary: #FFFAFB;
-    --color-highlight: #FF9F1C;
-    --color-background: #08390d;
-    --color-background-op: #08390d63;
-    --color-primary-op: #a9f683dc;
-
-}
-
-/* COLOR DEFINITION */
-
-.text-custom-primary {
-    color: var(--color-primary);
-}
-
-.text-custom-secondary {
-    color: var(--color-secondary);
-}
-
-.text-custom-tertiary {
-    color: var(--color-tertiary);
-}
-
-.text-custom-highlight {
-    color: var(--color-highlight);
-}
-
-.background-custom-primary {
-    background-color: var(--color-primary);
-}
-
-.background-custom-secondary {
-    background-color: var(--color-secondary);
-}
-
-.background-custom-tertiary {
-    background-color: var(--color-tertiary);
-}
-
-.background-custom-highlight {
-    background-color: var(--color-highlight);
-}
-
-.background-custom {
-    background-color: var(--color-background);
-}
-
-.background-custom-op {
-    background-color: var(--color-background-op);
-
-}
-
-.background-image-filter {
-    background-image: 
-        linear-gradient(var(--color-primary-op), var(--color-primary-op)), url("/storage/app/public/media/img/sfondo.png");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
+@import "./colors.css";
 
 /* MASTHEAD */
 
@@ -79,4 +18,16 @@
 
 a.text-reset {
     text-decoration: none;
+}
+
+/* ARTICLE CARD INDEX*/
+.card-index-custom{
+    max-width: 300px;
+}
+
+
+/* ARTICLE CARD CATEGORY*/
+.card-img-cat-custom{
+    height: 250px;
+    object-fit: cover;
 }
