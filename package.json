@@ -5,7 +5,7 @@
     "scripts": {
         "build": "vite build",
         "dev": "npm run check && vite",
-        "check": "node -e \"require('swiper')\""
+        "check": "node -e \"import('swiper')\""
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",
