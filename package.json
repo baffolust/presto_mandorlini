@@ -4,7 +4,8 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "npm run check && vite",
+        "check": "node -e \"require('swiper')\""
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",
@@ -18,9 +19,5 @@
         "axios": "^1.16.1",
         "bootstrap": "^5.3.8",
         "swiper": "^12.1.4"
-    },
-    "scripts": {
-        "dev": "npm run check && vite",
-        "check": "node -e \"require('swiper')\""
     }
 }
