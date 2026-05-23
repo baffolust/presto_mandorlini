@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+
 class Article extends Model
 {
     use HasFactory;
@@ -16,7 +17,8 @@ class Article extends Model
         'description',
         'price',
         'category_id',
-        'user_id'
+        'user_id',
+        'is_accepted'
     ];
 
 
@@ -26,6 +28,18 @@ class Article extends Model
 
     public function user():BelongsTo{
         return $this->belongsTo(User::class);
+    }
+
+    public function setAccepted($value){
+        $this->is_accepted = $value;
+        $this->save();
+        return true;
+
+    }
+
+    public static function toBeRevisedCount(){
+        return Article::where('is_accepted', null)->count();
+        
     }
 
 }

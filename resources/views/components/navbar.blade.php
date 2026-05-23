@@ -21,13 +21,6 @@
                     </li>
                 @endguest
 
-                @auth
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button class="nav-link" type="submit">Logout</button>
-                    </form>
-                    <p class="nav-link m-0" href="#">Benvenuto {{ Auth::user()->name }}</p>
-                @endauth
 
 
                 <li class="nav-item dropdown">
@@ -53,7 +46,9 @@
                     </a>
                     <ul class="dropdown-menu">
                         @foreach ($categories as $category)
-                            <li><a class="dropdown-item" href="{{route('article.byCategory', compact('category'))}}">{{ $category->name }}</a></li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('article.byCategory', compact('category')) }}">{{ $category->name }}</a>
+                            </li>
                             @if (!$loop->last)
                                 <hr class="dropdown-divider">
                             @endif
@@ -64,11 +59,52 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{ route('article.index') }}">Tutti gli Articoli</a>
                 </li>
+
+                @auth
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Sezione Revisori
+
+                        </a>
+                        <ul class="dropdown-menu pe-4">
+                            @if (Auth::user()->is_revisor)
+                                <li>
+                                    <a class="dropdown-item position-relative" href="{{ route('revisor.index') }}">
+                                        Dashboard Revisori
+                                        <span
+                                            class="position-absolute position-badge-custom translate-middle badge rounded-pill bg-danger">
+                                            {{ \App\Models\Article::toBeRevisedCount() }}
+                                            <span class="visually-hidden">articles to be revised</span>
+                                        </span>
+                                    </a>
+                                </li>
+                            @endif
+
+                            @if (!Auth::user()->is_revisor)
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('revisor.become-revisor') }}">Diventa un
+                                        revisore</a>
+                                </li>
+                            @endif
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                @endauth
+
             </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            @auth
+                <p class="nav-link m-0 me-md-3" href="#">Benvenuto <strong><em>{{ Auth::user()->name }}</em></strong>
+                </p>
+                <form class="me-1 my-2 my-md-0" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button class="btn background-custom-secondary text-custom-primary" type="submit">Logout</button>
+                </form>
+
+            @endauth
         </div>
     </div>
 </nav>

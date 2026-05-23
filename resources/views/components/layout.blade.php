@@ -14,7 +14,11 @@
 
     <x-navbar />
 
+    <x-display-session-errors/>
+    <x-display-session-message/>
+
     <div class="container-fluid min-vh-100">
+
 
         <x-masthead title={{$title}}/>
 

@@ -1,5 +1,7 @@
 <x-layout title="Home">
 
+    
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 text-center my-5">

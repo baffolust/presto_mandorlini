@@ -30,3 +30,8 @@
     max-height: 100px;
 }
 
+/* BADGE */
+.position-badge-custom{
+    top: 50%;
+    left: 185px;
+}
