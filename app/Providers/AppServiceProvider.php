@@ -23,8 +23,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if(Schema::hasTable('categories')){
-            View::share('categories', Category::orderBy('name')->get());
+        try {
+            if (Schema::hasTable('categories')) {
+                View::share('categories', Category::orderBy('name')->get());
+            }
+        } catch (\Throwable $e) {
+            // Evita crash durante composer / deploy / package:discover
         }
 
         Paginator::useBootstrapFive();

@@ -5,7 +5,10 @@ use App\Http\Controllers\PublicController;
 use App\Http\Controllers\RevisorController;
 use Illuminate\Support\Facades\Route;
 
+
+/* PUBLIC CONTROLLER */
 Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
+Route::get('/article/search', [PublicController::class, 'searchArticles'])->name('article.search');
 
 /* ARTICLE CONTOLLER */
 Route::get('/article/create', [ArticleController::class, 'create'])->name('article.create')->middleware('auth');

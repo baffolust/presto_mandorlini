@@ -31,3 +31,21 @@ a.text-reset {
     height: 250px;
     object-fit: cover;
 }
+
+/* NAVBAR */
+
+.btn-search-custom{
+    transition: 0.38s ease;
+    border: 2px solid var(--color-secondary);
+}
+
+.form-search-custom{
+    padding: 8px;
+    top: 6px;
+}
+
+.btn-search-custom:hover{
+    background-color: var(--color-secondary);
+
+    color: var(--color-tertiary);
+}
