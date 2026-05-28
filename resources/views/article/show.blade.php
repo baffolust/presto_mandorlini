@@ -28,9 +28,9 @@
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-12 col-md-9">
-                <h1 class="display-4"><span class=" fw-bold">Titolo: </span> {{$article->title}}</h1>
-                <h3 class="display-6"><span class=" fw-bold">Categoria: </span> {{$article->category->name}}</h3>
-                <h4><span class=" fw-bold">Descrizione: </span>{{$article->description }}</h4>
+                <h1 class="display-4"><span class=" fw-bold">{{__("ui.Title")}}: </span> {{$article->title}}</h1>
+                <h3 class="display-6"><span class=" fw-bold">{{__("ui.Category")}}: </span> {{__("ui.". $article->category->name)}}</h3>
+                <h4><span class=" fw-bold">{{__("ui.Description")}}: </span>{{$article->description }}</h4>
                 
             </div>
         </div>

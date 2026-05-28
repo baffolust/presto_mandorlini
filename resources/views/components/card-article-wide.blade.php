@@ -8,7 +8,7 @@
         
     </div>
     <div class="card-body p-1">
-        <a href="{{route('article.show', compact('article'))}}" class="card-link">Mostra Articolo</a>
-        <a href="#" class="card-link">Another link</a>
+        <a href="{{route('article.show', compact('article'))}}" class="card-link">{{__("ui.Show_Article")}}</a>
+        <a href="#" class="card-link">{{__("ui.Another_Link")}}</a>
     </div>
 </div>

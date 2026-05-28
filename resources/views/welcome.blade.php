@@ -11,7 +11,7 @@
             @auth
                 <div class="col-12 col-md-6 d-flex justify-content-center">
                     <a class="btn btn-homepage-custom background-custom-highlight text-custom-secondary"
-                        href="{{ route('article.create') }}">Pubblica un Articolo</a>
+                        href="{{ route('article.create') }}">{{__("ui.Publish_Article")}}</a>
                 </div>
             @endauth
 
@@ -27,7 +27,7 @@
                     </div>
                 @empty
                     <div class="col-12">
-                        <h3>Nessun articolo inserito</h3>
+                        <h3>{{__("ui.No_Articles")}}</h3>
                     </div>
                 @endforelse
             </div>

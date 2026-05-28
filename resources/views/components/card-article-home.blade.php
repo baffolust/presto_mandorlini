@@ -7,12 +7,12 @@
     <ul class="list-group list-group-flush">
         <li class="list-group-item">{{$article->price}} €</li>
         <li class="list-group-item">
-            <a href="{{route('article.byCategory', compact('category'))}}">{{ $category->name }}</a>
+            <a href="{{route('article.byCategory', compact('category'))}}">{{__("ui.$category->name")}}</a>
         </li>
         <li class="list-group-item">A third item</li>
     </ul>
     <div class="card-body">
-        <a href="{{route('article.show', compact('article'))}}" class="card-link">Mostra Articolo</a>
-        <a href="#" class="card-link">Another link</a>
+        <a href="{{route('article.show', compact('article'))}}" class="card-link">{{__("ui.Show_Article")}}</a>
+        <a href="#" class="card-link">{{__("ui.Another_Link")}}</a>
     </div>
 </div>

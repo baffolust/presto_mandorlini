@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 /* PUBLIC CONTROLLER */
 Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
 Route::get('/article/search', [PublicController::class, 'searchArticles'])->name('article.search');
+Route::post('/lingua/{lang}', [PublicController::class, 'setLanguage'])->name('setLocale');
 
 /* ARTICLE CONTOLLER */
 Route::get('/article/create', [ArticleController::class, 'create'])->name('article.create')->middleware('auth');

@@ -12,7 +12,7 @@
                     </div>
                 @empty
                     <div class="col-12">
-                        <h3>Nessun risultato trovato</h3>
+                        <h3>{{__("ui.No_Articles")}}</h3>
                     </div>
                 @endforelse
             </div>

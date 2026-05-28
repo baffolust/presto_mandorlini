@@ -20,9 +20,9 @@
         <div class="row justify-content-center py-5 m-3">
             <div class="col-12 col-md-7 ps-4 d-flex flex-column justify-content-between mb-3">
                 <h1>{{ $article_to_check->title }}</h1>
-                <h3>Autore: {{ $article_to_check->user->name }}</h3>
-                <h4>Prezzo: {{ $article_to_check->price }} €</h4>
-                <h4>Categoria: {{ $article_to_check->category->name }}</h4>
+                <h3>{{__("ui.Author")}}: {{ $article_to_check->user->name }}</h3>
+                <h4>{{__("ui.Article_Price")}}: {{__("ui.".$article_to_check->price)}} €</h4>
+                <h4>{{__("ui.Categoryr")}}: {{__("ui.".$article_to_check->category->name) }}</h4>
                 <p class="h6">{{ $article_to_check->description }}</p>
             </div>
             <div class="d-flex pb-4 justify-content-center">
@@ -30,13 +30,13 @@
                     method="POST">
                     @csrf
                     @method('PATCH')
-                    <button type="submit" class="btn btn-success">Accetta</button>
+                    <button type="submit" class="btn btn-success">{{__("ui.Accept")}}</button>
                 </form>
                 <form class="mx-2" action="{{ route('revisor.article.reject', ['article' => $article_to_check]) }}"
                     method="POST">
                     @csrf
                     @method('PATCH')
-                    <button type="submit" class="btn btn-danger">Rifiuta</button>
+                    <button type="submit" class="btn btn-danger">{{__("ui.Reject")}}</button>
                 </form>
             </div>
         </div>
@@ -44,9 +44,9 @@
         <div class="row justify-content-center align-items-center text-center">
             <div class="col-12">
                 <h1>
-                    Nessun articolo da revisionare
+                    {{__("ui.No_Articles")}}
                 </h1>
-                <a href="{{ route('homepage') }}" class="btn btn-primary">Torna all'homepage</a>
+                <a href="{{ route('homepage') }}" class="btn btn-primary">{{__("ui.Back_Homepage")}}</a>
             </div>
         </div>
     @endif
