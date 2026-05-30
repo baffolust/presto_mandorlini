@@ -1,37 +1,30 @@
 <x-layout title="">
 
-    <div class="swiper articleSwiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="https://picsum.photos/400" class="card-img-top"
-                    alt="immagine dell'articolo {{ $article->title }}">
-            </div>
-            <div class="swiper-slide">
-                <img src="https://picsum.photos/401" class="card-img-top"
-                    alt="immagine dell'articolo {{ $article->title }}">
-            </div>
-            <div class="swiper-slide">
-                <img src="https://picsum.photos/402" class="card-img-top"
-                    alt="immagine dell'articolo {{ $article->title }}">
-            </div>
-            <div class="swiper-slide">
-                <img src="https://picsum.photos/403" class="card-img-top"
-                    alt="immagine dell'articolo {{ $article->title }}">
-            </div>
-            <div class="swiper-slide">
-                <img src="https://picsum.photos/404" class="card-img-top"
-                    alt="immagine dell'articolo {{ $article->title }}">
-            </div>
-        </div>
-    </div>
+    <div class="container mb-5">
 
-    <div class="container mt-4">
+        @if ($article->images->count() > 0)
+
+            <div class="swiper articleSwiper mb-5 mb-md-0 ">
+                <div class="swiper-wrapper">
+                    @foreach ($article->images as $key => $image)
+                        <div class="swiper-slide">
+                            <img src="{{ Storage::url($image->path) }}" class="img-fluid shadow img-revisor"
+                                alt="immagine dell'articolo {{ $article->title }}">
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        @else
+            <img src="{{ Storage::url('public/media/img/Image_not_available.png') }}" class="card-img-top" alt="immagine dell'articolo {{ $article->title }}">
+
+        @endif
         <div class="row justify-content-center">
             <div class="col-12 col-md-9">
-                <h1 class="display-4"><span class=" fw-bold">{{__("ui.Title")}}: </span> {{$article->title}}</h1>
-                <h3 class="display-6"><span class=" fw-bold">{{__("ui.Category")}}: </span> {{__("ui.". $article->category->name)}}</h3>
-                <h4><span class=" fw-bold">{{__("ui.Description")}}: </span>{{$article->description }}</h4>
-                
+                <h1 class="display-4"><span class=" fw-bold">{{ __('ui.Title') }}: </span> {{ $article->title }}</h1>
+                <h3 class="display-6"><span class=" fw-bold">{{ __('ui.Category') }}: </span>
+                    {{ __('ui.' . $article->category->name) }}</h3>
+                <h4><span class=" fw-bold">{{ __('ui.Description') }}: </span>{{ $article->description }}</h4>
+
             </div>
         </div>
     </div>

@@ -14,3 +14,15 @@
     width: 100%;
 }
 
+@media (max-width: 480px) {
+    .articleSwiper {
+        height: 220px; /* oppure 180px */
+        /* margin-bottom: 0; */
+    }
+
+    .articleSwiper img {
+        object-fit: cover;
+        height: 220px;
+        width: 100%;
+    }
+}

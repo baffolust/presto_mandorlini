@@ -45,6 +45,9 @@ return [
     'Article_Price' => 'Prezzo',
     'Select_Category' => 'Seleziona una Categoria',
     'Article_Insert' => 'Inserisci un Articolo',
+    'Article_Category' => 'Categoria',
+    'Article_Images' => 'Carica Immagini',
+    'Article_Image_Preview' => 'Anteprima delle immagini',
 
     /* AUTH */
     'Name_Surname' => 'Nome Completo',
@@ -63,7 +66,8 @@ return [
     /* REVISOR */
     'Author' => 'Autore',
     'Accept' => 'Accetta',
-    'Reject' => 'Rifiuta'
+    'Reject' => 'Rifiuta',
+    'Back_Homepage' => 'Torna ad Home'
 
     
 

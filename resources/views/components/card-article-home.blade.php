@@ -1,5 +1,5 @@
 <div class="card card-index-custom mx-auto text-center background-custom-tertiary my-2 mb-4 shadow rounded-4">
-    <img src="https://picsum.photos/300" class="card-img-top" alt="immagine dell'articolo {{$article->title}}">
+    <img src="{{$article->images->isNotEmpty() ? Storage::url($article->images->first()->path) : Storage::url('public/media/img/Image_not_available.png')}}" class="card-img-top" alt="immagine dell'articolo {{$article->title}}">
     <div class="card-body">
         <h5 class="card-title">{{$article->title}}</h5>
         <p class="card-text">Brief description here. Max 50 letters</p>

@@ -7,7 +7,7 @@ import 'swiper/css/scrollbar';
 
 /* SWIPER */
 
-console.log('SCRIPT JS CARICATO');
+
 
 document.addEventListener('DOMContentLoaded', () => {
     new Swiper('.articleSwiper', {

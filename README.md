@@ -37,3 +37,8 @@ SCOUT_DRIVER=meilisearch
 MEILISEARCH_HOST=http://127.0.0.1:7700
 MEILISEARCH_KEY=
 ```
+
+ **IMMAGINI**
+ ---
+
+ Caricare un'immagine col nome __Image_not_available.png__ nel percorso _storage/app/public/media/img_

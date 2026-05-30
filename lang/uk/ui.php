@@ -46,6 +46,10 @@ return [
     'Article_Price' => 'Price',
     'Select_Category' => 'Select a Category',
     'Article_Insert' => 'Insert an Article',
+    'Article_Category' => 'Category',
+    'Article_Images' => 'Upload Photos',
+    'Article_Image_Preview' => 'Photo Preview',
+    
 
     /* AUTH */
     'Name_Surname' => 'Full Name',
@@ -65,5 +69,6 @@ return [
     'Author' => 'Author',
     'Accept' => 'Accept',
     'Reject' => 'Reject',
+    'Back_Homepage' => 'Back to Homepage'
 
 ];
