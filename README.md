@@ -42,3 +42,10 @@ MEILISEARCH_KEY=
  ---
 
  Caricare un'immagine col nome __Image_not_available.png__ nel percorso _storage/app/public/media/img_
+
+  **CROP**
+ ---
+
+ Ho inserito un try/catch perché il job andava in errore e non capivo come mai. I log mostravano errori nel filename, con un paio di @dd() ho corretto il metodo handle ed ho risolto.
+
+ Nel componennte  vista _article.byCategory_ è stata lasciato volutamente il metodo _Storage::url($article->images->first()->path)_ perché le card sono diverse ed è esteticamente più carino utilizzare le immagini intere.

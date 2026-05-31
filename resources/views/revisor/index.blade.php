@@ -11,7 +11,7 @@
 
                         @foreach ($article_to_check->images as $key => $image)
                             <div class="col-12 col-md-6 col-lg-4 text-center p-3 d-flex justify-content-center">
-                                <img class="img-fluid shadow img-revisor" src="{{ Storage::url($image->path) }}"
+                                <img class="img-fluid shadow img-revisor" src="{{ $image->getUrl(300, 300) }}"
                                     alt="immagine dell'articolo {{ $article_to_check->title }}">
                             </div>
                         @endforeach

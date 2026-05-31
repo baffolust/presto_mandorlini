@@ -8,7 +8,7 @@
                 <div class="swiper-wrapper">
                     @foreach ($article->images as $key => $image)
                         <div class="swiper-slide">
-                            <img src="{{ Storage::url($image->path) }}" class="img-fluid shadow img-revisor"
+                            <img src="{{ $image->getUrl(300, 300) }}" class="img-fluid shadow img-revisor"
                                 alt="immagine dell'articolo {{ $article->title }}">
                         </div>
                     @endforeach
