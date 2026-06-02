@@ -49,3 +49,14 @@ MEILISEARCH_KEY=
  Ho inserito un try/catch perché il job andava in errore e non capivo come mai. I log mostravano errori nel filename, con un paio di @dd() ho corretto il metodo handle ed ho risolto.
 
  Nel componennte  vista _article.byCategory_ è stata lasciato volutamente il metodo _Storage::url($article->images->first()->path)_ perché le card sono diverse ed è esteticamente più carino utilizzare le immagini intere.
+
+  **GOOGLE VISION**
+ ---
+
+In attesa di ricevere la chiave __google_credential.json__ ne ho creata una mia su Google API, ma per usufruire del servizio GoogleVision è necessario associare una carta di credito infatti ricevo il messaggio di errore
+
+local.ERROR: {
+    "reason": "BILLING_DISABLED",
+    "domain": "googleapis.com",}
+
+Il codice dovrebbe però funzionare
