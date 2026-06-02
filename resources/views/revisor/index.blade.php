@@ -1,4 +1,4 @@
-<x-layout title="{{__('ui.Revisor_Dashboard')}}">
+<x-layout title="{{ __('ui.Revisor_Dashboard') }}">
 
     {{-- <x-display-session-message /> --}}
 
@@ -14,12 +14,60 @@
                                 <img class="img-fluid shadow img-revisor" src="{{ $image->getUrl(300, 300) }}"
                                     alt="immagine dell'articolo {{ $article_to_check->title }}">
                             </div>
+                            <div class="col-md-5 ps-3">
+                                <div class="card-body">
+                                    <h5>Labels</h5>
+                                    @if ($image->labels)
+                                        @foreach ($image->labels as $label)
+                                            <p class="fst-italic"> {{ $label }} </p>
+                                        @endforeach
+                                    @else
+                                        <p class="fst-italic"> No labels </p>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-3 ps-2">
+                                <div class="card-body">
+                                    <h5>Ratings</h5>
+                                    <div class="row justify-content-center">
+                                        <div class="col-2">
+                                            <div class="text-center mx-auto {{ $image->adult }}"></div>
+                                            <div class="col-10">adult</div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-2">
+                                            <div class="text-center mx-auto {{ $image->violence }}"></div>
+                                            <div class="col-10">violence</div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-2">
+                                            <div class="text-center mx-auto {{ $image->spoof }}"></div>
+                                            <div class="col-10">spoof</div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-2">
+                                            <div class="text-center mx-auto {{ $image->racy }}"></div>
+                                            <div class="col-10">racy</div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-2">
+                                            <div class="text-center mx-auto {{ $image->medical }}"></div>
+                                            <div class="col-10">medical</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         @endforeach
                     @else
-                    <div class="col-12 text-center p-3 d-flex justify-content-center">
-                                <img class="img-fluid rounded shadow img-revisor" src="{{ Storage::url('public/media/img/Image_not_available.png') }}"
-                                    alt="immagine dell'articolo {{ $article_to_check->title }}">
-                            </div>
+                        <div class="col-12 text-center p-3 d-flex justify-content-center">
+                            <img class="img-fluid rounded shadow img-revisor"
+                                src="{{ Storage::url('public/media/img/Image_not_available.png') }}"
+                                alt="immagine dell'articolo {{ $article_to_check->title }}">
+                        </div>
                     @endif
                 </div>
             </div>

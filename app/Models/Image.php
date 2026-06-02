@@ -34,4 +34,8 @@ class Image extends Model
     public function getUrl($w = null, $h = null){
         return self::getUrlByFilePath($this->path, $w, $h);
     }
+
+    protected function casts(): array{
+        return ['label' => 'array'];
+    }
 }
