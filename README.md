@@ -50,18 +50,9 @@ MEILISEARCH_KEY=
 
  Nel componennte  vista _article.byCategory_ è stata lasciato volutamente il metodo _Storage::url($article->images->first()->path)_ perché le card sono diverse ed è esteticamente più carino utilizzare le immagini intere.
 
-  **GOOGLE VISION**
- ---
 
-In attesa di ricevere la chiave __google_credential.json__ ne ho creata una mia su Google API, ma per usufruire del servizio GoogleVision è necessario associare una carta di credito infatti ricevo il messaggio di errore
 
-local.ERROR: {
-    "reason": "BILLING_DISABLED",
-    "domain": "googleapis.com",}
-
-Il codice dovrebbe però funzionare
-
-  **CARICAMENTO MULTIPLO**
+  **GOOGLE VISION CARICAMENTO MULTIPLO**
  ---
 
 Caricando immagini multiple, si raggiunge il limite di chiamate API/minuto per utente. Il caricamento è testato e funziona, provate a testarlo con una chiave per una API pro. 
