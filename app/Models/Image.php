@@ -12,6 +12,8 @@ class Image extends Model
 {
     use HasFactory;
 
+    /* protected $casts = [ 'labels' => 'array' ]; */
+
     protected $fillable = [
         'path'
     ];
@@ -36,6 +38,6 @@ class Image extends Model
     }
 
     protected function casts(): array{
-        return ['label' => 'array'];
+        return ['labels' => 'array'];
     }
 }

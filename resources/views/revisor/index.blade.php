@@ -18,9 +18,11 @@
                                 <div class="card-body">
                                     <h5>Labels</h5>
                                     @if ($image->labels)
-                                        @foreach ($image->labels as $label)
-                                            <p class="fst-italic"> {{ $label }} </p>
-                                        @endforeach
+                                        <div class="d-flex flex-wrap">
+                                            @foreach ($image->labels as $label)
+                                                <p class="px-2 fst-italic"> #{{ $label }} </p>
+                                            @endforeach
+                                        </div>
                                     @else
                                         <p class="fst-italic"> No labels </p>
                                     @endif
@@ -30,34 +32,24 @@
                                 <div class="card-body">
                                     <h5>Ratings</h5>
                                     <div class="row justify-content-center">
-                                        <div class="col-2">
-                                            <div class="text-center mx-auto {{ $image->adult }}"></div>
-                                            <div class="col-10">adult</div>
-                                        </div>
+                                        <div class="col-2 text-center mx-auto {{ $image->adult }}"></div>
+                                        <div class="col-10">adult</div>
                                     </div>
                                     <div class="row justify-content-center">
-                                        <div class="col-2">
-                                            <div class="text-center mx-auto {{ $image->violence }}"></div>
-                                            <div class="col-10">violence</div>
-                                        </div>
+                                        <div class="col-2 text-center mx-auto {{ $image->violence }}"></div>
+                                        <div class="col-10">violence</div>
                                     </div>
                                     <div class="row justify-content-center">
-                                        <div class="col-2">
-                                            <div class="text-center mx-auto {{ $image->spoof }}"></div>
-                                            <div class="col-10">spoof</div>
-                                        </div>
+                                        <div class="col-2 text-center mx-auto {{ $image->spoof }}"></div>
+                                        <div class="col-10">spoof</div>
                                     </div>
                                     <div class="row justify-content-center">
-                                        <div class="col-2">
-                                            <div class="text-center mx-auto {{ $image->racy }}"></div>
-                                            <div class="col-10">racy</div>
-                                        </div>
+                                        <div class="col-2 text-center mx-auto {{ $image->racy }}"></div>
+                                        <div class="col-10">racy</div>
                                     </div>
                                     <div class="row justify-content-center">
-                                        <div class="col-2">
-                                            <div class="text-center mx-auto {{ $image->medical }}"></div>
-                                            <div class="col-10">medical</div>
-                                        </div>
+                                        <div class="col-2 text-center mx-auto {{ $image->medical }}"></div>
+                                        <div class="col-10">medical</div>
                                     </div>
                                 </div>
                             </div>
