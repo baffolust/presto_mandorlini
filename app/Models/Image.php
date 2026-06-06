@@ -23,21 +23,37 @@ class Image extends Model
         return $this->belongsTo(Article::class);
     }
 
-    public static function getUrlByFilePath($filePath, $w = null, $h = null){
-        if (!$w && !$h){
-            return Storage::url($filePath);
-        }
+    public static function getUrlByFilePath($filePath, $w = null, $h = null, $wm = false)
+    {
+
         $path = dirname($filePath);
         $filename = basename($filePath);
-        $file = "{$path}/crop_{$w}x{$h}_{$filename}";
-        return Storage::url($file);
+
+        // Foto Originale
+        if (!$w && !$h && !$wm) {
+            return Storage::url($filePath);
+        }
+
+        // Watermark Only
+        if (!$w && !$h && $wm==true) {
+            $file = "{$path}/wm_{$filename}";
+            return Storage::url($file);
+        }
+
+        // WM + Crop 
+        if ($w && $h) {
+            $file = "{$path}/crop_{$w}x{$h}_{$filename}";
+            return Storage::url($file);
+        }
     }
 
-    public function getUrl($w = null, $h = null){
-        return self::getUrlByFilePath($this->path, $w, $h);
+    public function getUrl($w = null, $h = null, $wm=false)
+    {
+        return self::getUrlByFilePath($this->path, $w, $h, $wm);
     }
 
-    protected function casts(): array{
+    protected function casts(): array
+    {
         return ['labels' => 'array'];
     }
 }

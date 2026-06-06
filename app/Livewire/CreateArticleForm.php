@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Jobs\ApplyWatermark;
 use App\Jobs\GoogleVisionLabelImage;
 use App\Jobs\GoogleVisionSafeSearch;
 use App\Jobs\RemoveFaces;
@@ -80,6 +81,7 @@ class CreateArticleForm extends Component
                 dispatch(new GoogleVisionLabelImage($newImage->id)); */
                 RemoveFaces::withChain([
                     new ResizeImage($newImage->path, 300, 300),
+                    new ApplyWatermark($newImage->path),
                     new GoogleVisionSafeSearch($newImage->id),
                     new GoogleVisionLabelImage($newImage->id)
                 ])->dispatch($newImage->id);

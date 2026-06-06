@@ -2,30 +2,28 @@
 
 namespace App\Jobs;
 
+
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Log;
 use Spatie\Image\Enums\AlignPosition;
-use Spatie\Image\Enums\CropPosition;
 use Spatie\Image\Enums\Unit;
 use Spatie\Image\Image;
 use Throwable;
 
-class ResizeImage implements ShouldQueue
+class ApplyWatermark implements ShouldQueue
 {
     use Queueable;
 
-    private $w;
-    private $h;
-    private $filename;
     private $path;
-
-    public function __construct($filePath, $w, $h)
+    private $filename;
+    /**
+     * Create a new job instance.
+     */
+    public function __construct($filePath)
     {
         $this->path = dirname($filePath);
         $this->filename = basename($filePath);
-        $this->h = $h;
-        $this->w = $w;
     }
 
     /**
@@ -33,28 +31,14 @@ class ResizeImage implements ShouldQueue
      */
     public function handle(): void
     {
-        $w = $this->w;
-        $h = $this->h;
         try {
-
             $base = storage_path('app/public');
 
             $srcPath = $base . '/' . $this->path . '/' . $this->filename;
 
-            $destPath = $base . '/' . $this->path . '/crop_' . $w . 'x' . $h . '_' . $this->filename;
+            $destPath = $base . '/' . $this->path . '/wm_' . $this->filename;
 
-          /*   $srcPath = storage_path() . 'app/public' . $this->path . '/' . $this->filename;
-            $destPath = storage_path() . 'app/public' . $this->path . "crop_{$w}x{$h}_" . $this->filename; */
-
-            
-
-            Log::info('ResizeImage job started', [
-                'src' => $srcPath,
-                'exists' => file_exists($srcPath),
-                'dest' => $destPath,
-            ]);
-
-            Image::load($srcPath)->crop($w, $h, CropPosition::Center)->watermark(
+            Image::load($srcPath)->watermark(
                 base_path('resources/img/watermark.png'),
                 width: 80,
                 height: 80,
@@ -62,11 +46,12 @@ class ResizeImage implements ShouldQueue
                 paddingY: 3,
                 paddingUnit: Unit::Pixel,
                 position: AlignPosition::Center
-                )->save($destPath);
+            )->save($destPath);
         } catch (Throwable $e) {
-            Log::error('ResizeImage job FAILED', [
+            Log::error('ApplyWatermark FAILED', [
                 'message' => $e->getMessage(),
-                'trace' => $e->getTraceAsString(),
+                'path' => $this->path,
+                'filename' => $this->filename
             ]);
 
             throw $e;
