@@ -60,3 +60,9 @@ local.ERROR: {
     "domain": "googleapis.com",}
 
 Il codice dovrebbe però funzionare
+
+  **CARICAMENTO MULTIPLO**
+ ---
+
+Caricando immagini multiple, si raggiunge il limite di chiamate API/minuto per utente. Il caricamento è testato e funziona, provate a testarlo con una chiave per una API pro. 
+Altrimenti andrebbe cambiata la struttura del codice per utilizzare un solo JOB GoogleVision oer immagine (al momento sono 3 JOB GV per immagine caricata).
