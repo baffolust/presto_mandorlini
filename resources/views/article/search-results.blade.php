@@ -8,7 +8,9 @@
             <div class="row article-section-custom justify-content-center align-items-center">
                 @forelse ($results as $result)
                     <div class="col-12 col-md-4">
-                        <x-card-article-home :article="$result" :category="$result->category" />
+                        <div class="article-wrapper-custom">
+                            <x-card-article-home :article="$result" :category="$result->category" />
+                        </div>
                     </div>
                 @empty
                     <div class="col-12">

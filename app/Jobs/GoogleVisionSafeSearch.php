@@ -8,9 +8,10 @@ use Google\Cloud\Vision\V1\BatchAnnotateImagesRequest;
 use Google\Cloud\Vision\V1\Client\ImageAnnotatorClient;
 use Google\Cloud\Vision\V1\Feature;
 use Google\Cloud\Vision\V1\Feature\Type;
+use Google\Cloud\Vision\V1\Image as VisionImage;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
-use Google\Cloud\Vision\V1\Image as VisionImage;
+use Illuminate\Queue\Middleware\RateLimited;
 use Illuminate\Support\Facades\Log;
 use Throwable;
 
@@ -18,9 +19,19 @@ class GoogleVisionSafeSearch implements ShouldQueue
 {
     use Queueable;
 
+    public $tries = 5; 
+    public $backoff = 30;
+
     /**
      * Create a new job instance.
      */
+
+    public function middleware(): array
+    {
+        return [
+            new RateLimited('vision'), 
+        ];
+    }
 
     private $article_image_id;
 

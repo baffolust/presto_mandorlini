@@ -2,10 +2,7 @@
     <img src="{{$article->images->isNotEmpty() ? $article->images->first()->getUrl(null, null, true) : Storage::url('public/media/img/Image_not_available.png')}}" class="card-img-top card-img-cat-custom" alt="immagine dell'articolo {{$article->title}}">
     <div class="card-body">
         <h3 class="card-title py-1 text-bold">{{$article->title}}</h3>
-        <h5 class="card-subtitle py-1">{{$article->price}}€</h5>
-
-        <p class="card-text mt-2">Brief description here. Max 50 letters</p>
-        
+        <h5 class="card-subtitle py-1">{{$article->price}}€</h5>        
     </div>
     <div class="card-body p-1">
         <a href="{{route('article.show', compact('article'))}}" class="card-link">{{__("ui.Show_Article")}}</a>

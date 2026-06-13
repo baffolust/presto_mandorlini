@@ -4,52 +4,48 @@
 
     {{-- @dd($article_to_check) --}}
     @if ($article_to_check)
+
         <div class="row justify-content-center pt-5">
             <div class="col-12 col-md-8">
-                <div class="row justify-content-center g-3">
+                <div class="row g-4 align-items-start">
                     @if ($article_to_check->images->count())
 
                         @foreach ($article_to_check->images as $key => $image)
-                            <div class="col-12 col-md-6 col-lg-4 text-center p-3 d-flex justify-content-center">
-                                <img class="img-fluid shadow img-revisor" src="{{ $image->getUrl(300, 300) }}"
-                                    alt="immagine dell'articolo {{ $article_to_check->title }}">
+                            {{-- IMMAGINE --}}
+                            <div class="col-12 col-md-6 col-lg-4 text-center">
+                                <div class="article-wrapper-custom p-2">
+                                    <img class="img-fluid shadow img-revisor" src="{{ $image->getUrl(300, 300) }}"
+                                        alt="immagine dell'articolo {{ $article_to_check->title }}">
+                                </div>
                             </div>
+
+                            {{-- LABELS --}}
                             <div class="col-md-5 ps-3">
-                                <div class="card-body">
-                                    <h5>Labels</h5>
+                                <div class="p-3 rounded-4 shadow-sm background-custom-tertiary">
+                                    <h6 class="text-uppercase text-muted mb-3">Labels</h6>
                                     @if ($image->labels)
-                                        <div class="d-flex flex-wrap">
+                                        <div class="d-flex flex-wrap gap-1">
                                             @foreach ($image->labels as $label)
-                                                <p class="px-2 fst-italic"> #{{ $label }} </p>
+                                                <span class="badge background-custom-secondary text-custom-primary">
+                                                    #{{ $label }} </span>
                                             @endforeach
                                         </div>
                                     @else
-                                        <p class="fst-italic"> No labels </p>
+                                        <span class="text-muted fst-italic">No labels</span>
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-md-3 ps-2">
-                                <div class="card-body">
-                                    <h5>Ratings</h5>
-                                    <div class="row justify-content-center">
-                                        <div class="col-2 text-center mx-auto {{ $image->adult }}"></div>
-                                        <div class="col-10">adult</div>
-                                    </div>
-                                    <div class="row justify-content-center">
-                                        <div class="col-2 text-center mx-auto {{ $image->violence }}"></div>
-                                        <div class="col-10">violence</div>
-                                    </div>
-                                    <div class="row justify-content-center">
-                                        <div class="col-2 text-center mx-auto {{ $image->spoof }}"></div>
-                                        <div class="col-10">spoof</div>
-                                    </div>
-                                    <div class="row justify-content-center">
-                                        <div class="col-2 text-center mx-auto {{ $image->racy }}"></div>
-                                        <div class="col-10">racy</div>
-                                    </div>
-                                    <div class="row justify-content-center">
-                                        <div class="col-2 text-center mx-auto {{ $image->medical }}"></div>
-                                        <div class="col-10">medical</div>
+
+                            {{-- RATINGS --}}
+                            <div class="col-12 col-md-3 ps-2">
+                                <div class="p-3 rounded-4 shadow-sm background-custom-tertiary">
+                                    <h6 class="text-uppercase text-muted mb-3">Ratings</h6>
+                                    <div class="revisor-ratings">
+                                        <div>Adult <span class="{{ $image->adult }}"></span></div>
+                                        <div>Violence <span class="{{ $image->violence }}"></span></div>
+                                        <div>Spoof <span class="{{ $image->spoof }}"></span></div>
+                                        <div>Racy <span class="{{ $image->racy }}"></span></div>
+                                        <div>Medical <span class="{{ $image->medical }}"></span></div>
                                     </div>
                                 </div>
                             </div>
@@ -64,29 +60,38 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center py-5 m-3">
-            <div class="col-12 col-md-7 ps-4 d-flex flex-column justify-content-between mb-3">
-                <h1>{{ $article_to_check->title }}</h1>
-                <h3>{{ __('ui.Author') }}: {{ $article_to_check->user->name }}</h3>
-                <h4>{{ __('ui.Article_Price') }}: {{ $article_to_check->price }} €</h4>
-                <h4>{{ __('ui.Category') }}: {{ __('ui.' . $article_to_check->category->name) }}</h4>
-                <p class="h6">{{ $article_to_check->description }}</p>
-            </div>
-            <div class="d-flex pb-4 justify-content-center">
-                <form class="mx-2" action="{{ route('revisor.article.accept', ['article' => $article_to_check]) }}"
-                    method="POST">
-                    @csrf
-                    @method('PATCH')
-                    <button type="submit" class="btn btn-success">{{ __('ui.Accept') }}</button>
-                </form>
-                <form class="mx-2" action="{{ route('revisor.article.reject', ['article' => $article_to_check]) }}"
-                    method="POST">
-                    @csrf
-                    @method('PATCH')
-                    <button type="submit" class="btn btn-danger">{{ __('ui.Reject') }}</button>
-                </form>
+
+        {{-- ARTICLE INFO + ACTION BUTTONS --}}
+
+        <div class="container pb-5">
+
+            <div class="row justify-content-center py-5 m-3">
+                <div class="col-12 col-md-8 ps-4 d-flex flex-column justify-content-between mb-3">
+                    <h5 class="mb-3">{{ $article_to_check->title }}</h5>
+                    <h5>{{ __('ui.Author') }}: {{ $article_to_check->user->name }}</h5>
+                    <h5>{{ __('ui.Article_Price') }}: {{ $article_to_check->price }} €</h5>
+                    <h5>{{ __('ui.Category') }}: {{ __('ui.' . $article_to_check->category->name) }}</h5>
+                    <p class="mt-3">{{ $article_to_check->description }}</p>
+                </div>
+                <div class="row justify-content-center mt-4">
+                    <div class="col-12 col-md-6 d-flex justify-content-center gap-3">
+                        <form class="mx-2" action="{{ route('revisor.article.accept', ['article' => $article_to_check]) }}"
+                            method="POST">
+                            @csrf
+                            @method('PATCH')
+                            <button type="submit" class="btn btn-success px-4">{{ __('ui.Accept') }}</button>
+                        </form>
+                        <form class="mx-2" action="{{ route('revisor.article.reject', ['article' => $article_to_check]) }}"
+                            method="POST">
+                            @csrf
+                            @method('PATCH')
+                            <button type="submit" class="btn btn-danger px-4">{{ __('ui.Reject') }}</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
+
     @else
         <div class="row justify-content-center align-items-center text-center">
             <div class="col-12">

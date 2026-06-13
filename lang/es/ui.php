@@ -16,6 +16,9 @@ return [
 
     /* HOME */
     'Publish_Article' => 'Publicar un Artículo',
+    'Homepage_Subtitle' => 'Compra, vende y encuentra todo lo que buscas en un instante',
+    'Homepage_Last_Articles' => 'Últimos Anuncios',
+    'Homepage_Last_Articles_Subtitle' => 'Descubre las novedades recién publicadas',
 
     /* NAVBAR */
     'Home' => 'Home',
@@ -66,5 +69,9 @@ return [
     'Author' => 'Autor',
     'Accept' => 'Aceptar',
     'Reject' => 'Rechazar',
-    'Back_Homepage' => 'Vuelve a Home'
+    'Back_Homepage' => 'Vuelve a Home',
+
+    /* INDEX */
+
+    'Discover_all_articles' => 'Explora todos los anuncios',
 ];

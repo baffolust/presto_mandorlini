@@ -52,11 +52,27 @@ MEILISEARCH_KEY=
 
 
 
-  **GOOGLE VISION CARICAMENTO MULTIPLO**
+  **GOOGLE VISION CARICAMENTO MULTIPLO - RISOLTO**
  ---
 
-Caricando immagini multiple, si raggiunge il limite di chiamate API/minuto per utente. Il caricamento è testato e funziona, provate a testarlo con una chiave per una API pro. 
-Altrimenti andrebbe cambiata la struttura del codice per utilizzare un solo JOB GoogleVision oer immagine (al momento sono 3 JOB GV per immagine caricata).
+Per poter permettere l'analisi con GoogleVision rispettando il limite delle chiamate API/min consentite dalla chiave free, ho definito la coda "vision" che gestisce tutti job. In questo modo i Job GVLabelImage GVSafeSearch e RemoveFaces operano rispettando i limiti di GV.
+Nella code vision ho dovuto metterci anche ResizeImage e ApplyWatermark per via di questa porzione di codice che non sono riuscito a scorporare
+
+```bash
+RemoveFaces::withChain([
+    new ResizeImage($newImage->path, 300, 300),
+    new ApplyWatermark($newImage->path),
+
+])->onQueue('vision')->dispatch($newImage->id);
+```
+
+Lanciare il comando 
+
+```bash
+php artisan queue:work --queue=vision
+```
+
+per far partire la coda _vision_. Attendere qualche minuto nella pagina revisor per far completare i job di tutte le foto.
 
   **WATERMARK**
  ---

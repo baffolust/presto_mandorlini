@@ -14,13 +14,16 @@
 
     <x-navbar />
 
-    <x-display-session-errors/>
-    <x-display-session-message/>
+    <x-display-session-errors />
+    <x-display-session-message />
 
-    <div class="container-fluid min-vh-100">
+    @if (!($hideMasthead ?? false))
+        <x-masthead title="{{ $title }}" subtitle="{{$subtitle ?? null}}"/>
+    @endif
+
+    <div class="container-fluid px-0 overflow-x-hidden min-vh-100">
 
 
-        <x-masthead title={{$title}}/>
 
         {{ $slot }}
 

@@ -16,6 +16,9 @@ return [
 
     /* HOME */
     'Publish_Article' => 'Publish an Article',
+    'Homepage_Subtitle' => 'Buy, sell and find everything you are looking for in no time',
+    'Homepage_Last_Articles' => 'Latest Listings',
+    'Homepage_Last_Articles_Subtitle' => 'Discover the latest newly published items',
 
     /* NAVBAR */
     'Home' => 'Home',
@@ -69,6 +72,9 @@ return [
     'Author' => 'Author',
     'Accept' => 'Accept',
     'Reject' => 'Reject',
-    'Back_Homepage' => 'Back to Homepage'
+    'Back_Homepage' => 'Back to Homepage',
+
+    /* INDEX */
+    'Discover_all_articles' => 'Browse all listings',
 
 ];

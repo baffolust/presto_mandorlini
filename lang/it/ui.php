@@ -16,6 +16,9 @@ return [
 
     /* HOME */
     'Publish_Article' => 'Pubblica un Articolo',
+    'Homepage_Subtitle' => 'Compra, vendi e trova tutto quello che cerchi in un attimo',
+    'Homepage_Last_Articles' => 'Ultimi annunci',
+    'Homepage_Last_Articles_Subtitle' => 'Scopri le novità appena pubblicate',
 
     /* NAVBAR */
     'Home' => 'Home',
@@ -67,8 +70,10 @@ return [
     'Author' => 'Autore',
     'Accept' => 'Accetta',
     'Reject' => 'Rifiuta',
-    'Back_Homepage' => 'Torna ad Home'
+    'Back_Homepage' => 'Torna ad Home',
 
+    /* INDEX */
+    'Discover_all_articles' => 'Sfoglia tutti gli annunci',
     
 
     

@@ -6,21 +6,33 @@ use App\Models\Image;
 use Google\Cloud\Vision\V1\AnnotateImageRequest;
 use Google\Cloud\Vision\V1\BatchAnnotateImagesRequest;
 use Google\Cloud\Vision\V1\Client\ImageAnnotatorClient;
-use Google\Cloud\Vision\V1\Image as VisionImage;
 use Google\Cloud\Vision\V1\Feature;
 use Google\Cloud\Vision\V1\Feature\Type;
+use Google\Cloud\Vision\V1\Image as VisionImage;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Queue\Middleware\RateLimited;
 use Illuminate\Support\Facades\Log;
-use Throwable;
 use Spatie\Image\Enums\AlignPosition;
-use Spatie\Image\Image as SpatieImage;
 use Spatie\Image\Enums\Fit;
+use Spatie\Image\Image as SpatieImage;
+use Throwable;
 
 
 class RemoveFaces implements ShouldQueue
 {
     use Queueable;
+
+    public $tries = 5;
+    public $backoff = 30;
+
+    public function middleware(): array
+    {
+        return [
+            new RateLimited('vision'),
+        ];
+    }
+
 
     protected $article_image_id;
     /**
@@ -78,9 +90,13 @@ class RemoveFaces implements ShouldQueue
 
             $faces = $response[0]->getFaceAnnotations();
 
+
+
             if (!$faces) {
                 throw new \Exception('FaceAnnotation missing');
             }
+
+            $spatie_img = SpatieImage::load($src);
 
             foreach ($faces as $face) {
 
@@ -93,9 +109,9 @@ class RemoveFaces implements ShouldQueue
                 $w = $bounds[2][0] - $bounds[0][0];
                 $h = $bounds[2][1] - $bounds[0][1];
 
-                $image = SpatieImage::load($src);
+                /* $image = SpatieImage::load($src); */
 
-                $image->watermark(
+                $spatie_img->watermark(
                     base_path('resources/img/smile.png'),
                     AlignPosition::TopLeft,
                     paddingX: $bounds[0][0],
@@ -104,12 +120,10 @@ class RemoveFaces implements ShouldQueue
                     height: $h,
                     fit: Fit::Stretch
                 );
-
-                $image->save($src);
             }
+            $spatie_img->save($src);
 
             $googleVisionClient->close();
-            
         } catch (Throwable $e) {
             Log::error('RemoveFaces failed', [
                 'image_id' => $this->article_image_id,

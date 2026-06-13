@@ -82,9 +82,11 @@ class CreateArticleForm extends Component
                 RemoveFaces::withChain([
                     new ResizeImage($newImage->path, 300, 300),
                     new ApplyWatermark($newImage->path),
-                    new GoogleVisionSafeSearch($newImage->id),
-                    new GoogleVisionLabelImage($newImage->id)
-                ])->dispatch($newImage->id);
+
+                ])->onQueue('vision')->dispatch($newImage->id);
+
+                dispatch(new GoogleVisionSafeSearch($newImage->id))->onQueue('vision');
+                dispatch(new GoogleVisionLabelImage($newImage->id))->onQueue('vision');
             }
             File::deleteDirectory(storage_path('app/livewire-tmp'));
         }
@@ -122,6 +124,4 @@ class CreateArticleForm extends Component
     {
         return view('livewire.create-article-form');
     }
-
-
 }

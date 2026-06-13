@@ -13,15 +13,25 @@ use Google\Cloud\Vision\V1\Image as VisionImage;
 use Google\Cloud\Vision\V1\Feature\Type;
 use Illuminate\Support\Facades\Log;
 use Throwable;
+use Illuminate\Queue\Middleware\RateLimited;
 
 class GoogleVisionLabelImage implements ShouldQueue
 {
     use Queueable;
 
+    public $tries = 5; 
+    public $backoff = 30;
     /**
      * Create a new job instance.
      */
     private $article_image_id;
+
+    public function middleware(): array
+    {
+        return [
+            new RateLimited('vision'), 
+        ];
+    }
 
     public function __construct($article_image_id)
     {
