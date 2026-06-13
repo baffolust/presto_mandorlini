@@ -66,13 +66,7 @@
         <div class="container pb-5">
 
             <div class="row justify-content-center py-5 m-3">
-                <div class="col-12 col-md-8 ps-4 d-flex flex-column justify-content-between mb-3">
-                    <h5 class="mb-3">{{ $article_to_check->title }}</h5>
-                    <h5>{{ __('ui.Author') }}: {{ $article_to_check->user->name }}</h5>
-                    <h5>{{ __('ui.Article_Price') }}: {{ $article_to_check->price }} €</h5>
-                    <h5>{{ __('ui.Category') }}: {{ __('ui.' . $article_to_check->category->name) }}</h5>
-                    <p class="mt-3">{{ $article_to_check->description }}</p>
-                </div>
+                <x-info-article :article="$article_to_check"/>
                 <div class="row justify-content-center mt-4">
                     <div class="col-12 col-md-6 d-flex justify-content-center gap-3">
                         <form class="mx-2" action="{{ route('revisor.article.accept', ['article' => $article_to_check]) }}"
